@@ -1,3 +1,19 @@
 body {
-  background-image: estesymboli.jpg
+  background-color: white;
+  background-image: estesymboli.jpg;
+  background-position:right-top;
+  background-repeat: no-repeat;
+  background-size: 400px, 300px; 
+}
+h1 {
+  color: black;
+  text-align: center;
+  font-size:24px;
+}
+h2{
+  color: black;
+  text-align: center;
+  font-size: 18px;  
+}
+
 }
