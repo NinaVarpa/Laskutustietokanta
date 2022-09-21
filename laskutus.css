@@ -19,11 +19,11 @@ h1 {
   margin: 20px; 
   
 }
-nimi{
+.nimi{
   text-align: center;
   color:black;
 }
-salasana{
+.salasana{
   text-align: center;
   color:black;
 }
@@ -48,7 +48,20 @@ salasana{
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    
 }
   .lomaketieto:hover {
     background-color: black;  
+}
+.boksi{
+  width: 30px;
+  height: 30px;
+  border: 1px solid black; 
+  position: center;
+  align-items: right; 
+}
+.lomake.html{
+  color:black
+  font-size: 12px;
+  text-align: center;
 }
