@@ -22,3 +22,15 @@
    cursor: pointer;
   text-align: center;
 }
+laheta {
+    width: 30%;
+    background-color:black;
+    color: white;
+    padding: 14px 14px;
+    margin: 4px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    
+}
+  

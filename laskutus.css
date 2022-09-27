@@ -53,14 +53,7 @@ h1 {
   .lomaketieto:hover {
     background-color: black;  
 }
-.boksi{
-  width: 30px;
-  height: 30px;
-  border: 1px solid black; 
-  position: center;
-  align-items: right; 
-}
-.lomake.html{
+ .lomake.html{
   color:black
   font-size: 12px;
   text-align: center;
