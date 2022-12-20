@@ -61,7 +61,7 @@ if ($conn->connect_error) {
 ```
 
 
-Lomakkeelta lähetetty tieto käsitellään kasittely2.php. Koodi tarkastaa tietokannasta löytyykö kirjattu nimi ja salasana Kartoittaja tablesta.
+INDEX.PHP lomakkeelta lähetetty tieto käsitellään kasittely2.php. Koodi tarkastaa tietokannasta löytyykö kirjattu nimi ja salasana Kartoittaja tablesta.Jos tietoja löydy, et voi lisätä asiakasta seuraavalta lomakkeelta.
 ```
 <?php
 
@@ -100,5 +100,101 @@ if ($result->num_rows > 0) {
 echo "Lisää asiakas kartoittajalle: " . $kart_id . " " . $nimi;
 $conn->close();
 ```
+Kun olet kirjaantunut lomakkeelle sisään kasittely2.php sivun alhaalla on lomake, johon kirjoitetaan asiakas ja kart_id, jolla selviää kuka kartoittaja on kyseessä.
+```
+<html>
+  <body>
+    <form action ="kasittely3.php" method ="post"><br>
+      <label for="asiakas"> Asiakas</label>
+      <input type="text" name="Asiakas"><br>
+      <input type = "Hidden" name="kart_id" value=<?php echo $kart_id ?>>
+      <input type="submit" value="Lisää asiakas">
+    </form>
+  </body>
 
+</html>
+```
+Tältä lomakkeelta lähetetyt tiedot käsitellään lomalleella kasittely3.php
+```
+<?php
+
+$servername = "hyvis.mysql.database.azure.com";
+$username = "db_projekti";
+$password = "Sivyh2022";
+$dbname = "ninav_db";
+
+
+$conn = new mysqli ($servername, $username, $password, $dbname);
+ if ($conn->connect_error) {
+  die("connection failed: " .$conn-> connect_error);
+ }
+
+    
+    
+echo $_POST['Asiakas'];
+echo $_POST['kart_id'];
+
+$asiakas = $_POST['Asiakas'];
+$kart_id = $_POST['kart_id'];
+
+
+
+$stmt = $conn->prepare('INSERT INTO asiakas(asiakas,kart_id) VALUES (?,?)');
+$stmt->bind_param('ss',$asiakas,$kart_id);
+$stmt-> execute();
+
+echo "Asikas lisätty kartoittajalle: " . $kart_id . "" . $asiakas;
+$stmt->close();
+$conn->close();
+header("Location: listaus.php");
+
+
+?>
+```
+Tämä kysely lisää asikas tietokantaa asiakkaan tiedot ja kirjautuneen kartoittajan (kart_id). Samalla koodo tulostaa kartoittajan id ja asiakaan.
+
+Rekisteröityminen tapahtuu omalla lomakkeella. Rekisterointi.php sivulla
+```
+<html>
+    <form action ="kasittely.php" method ="post">
+          <div class="otsikko2">Rekisteröidy</div><br>
+          <label for="nimi"> Nimi </label>
+          <input class="lomake" type="text" name="Nimi"><br>
+          <label for="salasana"> Salasana </label>
+          <input class="lomake" type="text" name="Salasana"><br>
+          <br>
+          <input class="lomaketieto"type="submit"value="Rekisteröidy">
+        </form>
+    </html>
+```
+Tiedot käsitellään kasittely.php sivulla`.
+```
+<?php
+include 'rekisterointi.php';
+$servername = "hyvis.mysql.database.azure.com";
+$username = "db_projekti";
+$password = "Sivyh2022";
+$dbname = "ninav_db";
+
+mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+$conn = new mysqli ($servername, $username, $password, $dbname);
+ if ($conn->connect_error) {
+  die("connection failed: " .$conn-> connect_error);
+ }
+
+    
+    
+echo $_POST['Nimi'];
+echo $_POST['Salasana'];
+
+$nimi = $_POST['Nimi'];
+$salasana = $_POST['Salasana'];
+
+$stmt = $conn->prepare('INSERT INTO kartoittaja(nimi,salasana)VALUES(?,?)');
+$stmt->bind_param('ss',$nimi,$salasana,);
+$stmt-> execute();
+header("Location: index.php");
+die();
+?>
+```
 
