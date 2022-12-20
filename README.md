@@ -24,5 +24,25 @@ Sen jälkeen voit avatat visual coden ja
 Kun kirjaudut Mysqual workbench   mene kohtaan Data Export. Etsi sieltä ninav_db tietokanta. Tietokannasta löytyy Tablet Kartoittaja, Asiakas, Kartoituskohde ja lasku. 
 Hahmoittelin tietokanta tableja paperille ja miten visuaalisesti toteuttaisin tietokantani. Toteutus ei mennyt ihan niin.
 ![Tietokanta](tietokanta1.jpg)
+Tässä kuva tietokannastani. Tähän asti sain toteutettua työni.
+Tässä ovat tietokantani php filet.
+Ensimmäiseki tulee index.php sivu, jossa kirjaudutaan sivustolle, kun on rekisteröitynyt aikaisemmin itsensä tällä sivulla tai muuten sivussa on linkki rekistöröintisivulle.
+'''
+<html> 
+    <h1>LASKUTUSOHJELMA</h1>  
+      <form action ="kasittely2.php" method ="post"><br>
+          <label for="nimi"> Nimi </label>
+          <input type="text" name="Nimi"><br>
+          <label for="salasana"> Salasana </label>
+          <input type="text" name="Salasana"><br>
+          <input type="submit" value="Kirjaudu">
+        </form>
+
+        
+  <a href="kirjaus.php"> lomake</a><br>
+  <a href= "rekisterointi.php"> Rekisteröidy</a>
+  </Body>
+</html>
+'''
 
 
