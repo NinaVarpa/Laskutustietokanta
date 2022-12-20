@@ -26,7 +26,7 @@ Hahmoittelin tietokanta tableja paperille ja miten visuaalisesti toteuttaisin ti
 
 ![Suunnitelma](pititulla.jpg)
 
-Tässä toetutunut työ tietokannoistani
+##Tässä toteutunut työ tietokannoistani
 
 ![Tietokanta](tietokanta2.jpg)
 
