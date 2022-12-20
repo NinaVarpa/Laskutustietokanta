@@ -27,7 +27,7 @@ Hahmoittelin tietokanta tableja paperille ja miten visuaalisesti toteuttaisin ti
 Tässä kuva tietokannastani. Tähän asti sain toteutettua työni.
 Tässä ovat tietokantani php filet.
 Ensimmäiseki tulee index.php sivu, jossa kirjaudutaan sivustolle, kun on rekisteröitynyt aikaisemmin itsensä tällä sivulla tai muuten sivussa on linkki rekistöröintisivulle.
-'''
+```
 <html> 
     <h1>LASKUTUSOHJELMA</h1>  
       <form action ="kasittely2.php" method ="post"><br>
@@ -43,9 +43,9 @@ Ensimmäiseki tulee index.php sivu, jossa kirjaudutaan sivustolle, kun on rekist
   <a href= "rekisterointi.php"> Rekisteröidy</a>
   </Body>
 </html>
-'''
+```
 Yhteys php-lomakkeelta tietokantaan luodaan näin:
-'''
+```
 <?php
 
 $servername = "hyvis.mysql.database.azure.com";
@@ -58,11 +58,11 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
-'''
+```
 
 
 Lomakkeelta lähetetty tieto käsitellään kasittely2.php. Koodi tarkastaa tietokannasta löytyykö kirjattu nimi ja salasana Kartoittaja tablesta.
-'''
+```
 <?php
 
 $servername = "hyvis.mysql.database.azure.com";
@@ -99,6 +99,6 @@ if ($result->num_rows > 0) {
 
 echo "Lisää asiakas kartoittajalle: " . $kart_id . " " . $nimi;
 $conn->close();
-'''
+```
 
 
