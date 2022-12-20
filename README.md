@@ -197,4 +197,4 @@ header("Location: index.php");
 die();
 ?>
 ```
-
+Tällä koodilla syötetään tietokantaan kartoittajan nimi ja salasana. ID numero luodaan automaattisesti tietokantaan.
