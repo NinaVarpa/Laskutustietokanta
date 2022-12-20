@@ -23,10 +23,13 @@ Sen jälkeen voit avatat visual coden ja
 
 Kun kirjaudut Mysqual workbench   mene kohtaan Data Export. Etsi sieltä ninav_db tietokanta. Tietokannasta löytyy Tablet Kartoittaja, Asiakas, kohde ja lasku. 
 Hahmoittelin tietokanta tableja paperille ja miten visuaalisesti toteuttaisin tietokantani. Toteutus ei mennyt ihan niin.
+
 ![Suunnitelma](pititulla.jpg)
 
 Tässä toetutunut työ tietokannoistani
+
 ![Tietokanta](tietokanta2.jpg)
+
 Tässä kuva tietokannastani. Tähän asti sain toteutettua työni.
 Tässä ovat tietokantani php filet.
 Ensimmäiseki tulee index.php sivu, jossa kirjaudutaan sivustolle, kun on rekisteröitynyt aikaisemmin itsensä tällä sivulla tai muuten sivussa on linkki rekistöröintisivulle.
