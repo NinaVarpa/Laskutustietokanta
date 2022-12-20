@@ -22,3 +22,4 @@ Tämän kun olet tehdyt etsi kansion polku ja kopioi polku. Mene command prompt 
 Sen jälkeen voit avatat visual coden ja
 
 Kun kirjaudut Mysqual workbench   mene kohtaan Data Export. Etsi sieltä ninav_db tietokanta. Tietokannasta löytyy Tablet Kartoittaja, Asiakas, Kartoituskohde ja lasku. 
+
