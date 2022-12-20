@@ -44,5 +44,61 @@ Ensimmäiseki tulee index.php sivu, jossa kirjaudutaan sivustolle, kun on rekist
   </Body>
 </html>
 '''
+Yhteys php-lomakkeelta tietokantaan luodaan näin:
+'''
+<?php
+
+$servername = "hyvis.mysql.database.azure.com";
+$username = "db_projekti";
+$password = "Sivyh2022";
+$dbname = "ninav_db";
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+}
+'''
+
+
+Lomakkeelta lähetetty tieto käsitellään kasittely2.php. Koodi tarkastaa tietokannasta löytyykö kirjattu nimi ja salasana Kartoittaja tablesta.
+'''
+<?php
+
+$servername = "hyvis.mysql.database.azure.com";
+$username = "db_projekti";
+$password = "Sivyh2022";
+$dbname = "ninav_db";
+
+
+ 
+
+  $nimi = $_POST["Nimi"];
+  $salasana = $_POST["Salasana"];
+  $kart_id;
+
+  $conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+}
+
+$sql = "SELECT * FROM kartoittaja WHERE nimi='{$nimi}' AND salasana='{$salasana}'";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+  // output data of each row
+  while($row = $result->fetch_assoc()) {
+    echo $row["id"]. "<br>";
+    $kart_id = $row["id"];
+  }
+} else {
+  header("Location: asiakas.php");
+  echo "0 results";
+}
+
+echo "Lisää asiakas kartoittajalle: " . $kart_id . " " . $nimi;
+$conn->close();
+'''
 
 
