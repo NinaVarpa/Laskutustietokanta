@@ -54,10 +54,10 @@ Yhteys php-lomakkeelta tietokantaan luodaan näin:
 ```
 <?php
 
-$servername = "hyvis.mysql.database.azure.com";
-$username = "db_projekti";
-$password = "Sivyh2022";
-$dbname = "ninav_db";
+$servername = "xxxxxxx";
+$username = "xxxxxx";
+$password = "xxxxx";
+$dbname = "xxxx";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 // Check connection
@@ -70,14 +70,6 @@ if ($conn->connect_error) {
 INDEX.PHP lomakkeelta lähetetty tieto käsitellään kasittely2.php. Koodi tarkastaa tietokannasta löytyykö kirjattu nimi ja salasana Kartoittaja tablesta.Jos tietoja löydy, et voi lisätä asiakasta seuraavalta lomakkeelta.
 ```
 <?php
-
-$servername = "hyvis.mysql.database.azure.com";
-$username = "db_projekti";
-$password = "Sivyh2022";
-$dbname = "ninav_db";
-
-
- 
 
   $nimi = $_POST["Nimi"];
   $salasana = $_POST["Salasana"];
@@ -123,20 +115,7 @@ Kun olet kirjaantunut lomakkeelle sisään kasittely2.php sivun alhaalla on loma
 Tältä lomakkeelta lähetetyt tiedot käsitellään lomalleella kasittely3.php
 ```
 <?php
-
-$servername = "hyvis.mysql.database.azure.com";
-$username = "db_projekti";
-$password = "Sivyh2022";
-$dbname = "ninav_db";
-
-
-$conn = new mysqli ($servername, $username, $password, $dbname);
- if ($conn->connect_error) {
-  die("connection failed: " .$conn-> connect_error);
- }
-
-    
-    
+       
 echo $_POST['Asiakas'];
 echo $_POST['kart_id'];
 
@@ -157,7 +136,7 @@ header("Location: listaus.php");
 
 ?>
 ```
-Tämä kysely lisää asikas tietokantaa asiakkaan tiedot ja kirjautuneen kartoittajan (kart_id). Samalla koodo tulostaa kartoittajan id ja asiakaan.
+Tämä kysely lisää asikas tietokantaa asiakkaan tiedot ja kirjautuneen kartoittajan (kart_id). Samalla koodi tulostaa kartoittajan id ja asiakaan.
 
 Rekisteröityminen tapahtuu omalla lomakkeella. Rekisterointi.php sivulla
 ```
@@ -177,10 +156,10 @@ Tiedot käsitellään kasittely.php sivulla`.
 ```
 <?php
 include 'rekisterointi.php';
-$servername = "hyvis.mysql.database.azure.com";
-$username = "db_projekti";
-$password = "Sivyh2022";
-$dbname = "ninav_db";
+$servername = "xxxxx";
+$username = "xxxxxx";
+$password = "xxxxxx";
+$dbname = "xxxxx";
 
 mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 $conn = new mysqli ($servername, $username, $password, $dbname);
