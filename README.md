@@ -33,23 +33,9 @@ Hahmoittelin tietokanta tableja paperille ja miten visuaalisesti toteuttaisin ti
 Tässä kuva tietokannastani. Tähän asti sain toteutettua työni.
 Tässä ovat tietokantani php filet.
 Ensimmäiseki tulee index.php sivu, jossa kirjaudutaan sivustolle, kun on rekisteröitynyt aikaisemmin itsensä tällä sivulla tai muuten sivussa on linkki rekistöröintisivulle.
-```
-<html> 
-    <h1>LASKUTUSOHJELMA</h1>  
-      <form action ="kasittely2.php" method ="post"><br>
-          <label for="nimi"> Nimi </label>
-          <input type="text" name="Nimi"><br>
-          <label for="salasana"> Salasana </label>
-          <input type="text" name="Salasana"><br>
-          <input type="submit" value="Kirjaudu">
-        </form>
 
-        
-  <a href="kirjaus.php"> lomake</a><br>
-  <a href= "rekisterointi.php"> Rekisteröidy</a>
-  </Body>
-</html>
-```
+###YHTEYS TIETOKANTAAN
+
 Yhteys php-lomakkeelta tietokantaan luodaan näin:
 ```
 <?php
@@ -65,21 +51,34 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 ```
+### KIRJAANTUMINEN
+```
+<html>
+    <body>
+        <h1>LASKUTUSOHJELMA</h1>  
+        <form action ="kasittely2.php" method ="post"><br>
+          <label for="nimi"> Nimi </label>
+          <input type="text" name="Nimi"><br>
+          <label for="salasana"> Salasana </label>
+          <input type="text" name="Salasana"><br>
+          <input type="submit" value="Kirjaudu">
+        </form>   
+        <a href="kirjaus.php"> lomake</a><br>
+        <a href= "rekisterointi.php"> Rekisteröidy</a>
+     </Body>
+</html>
+```
 
 
-INDEX.PHP lomakkeelta lähetetty tieto käsitellään kasittely2.php. Koodi tarkastaa tietokannasta löytyykö kirjattu nimi ja salasana Kartoittaja tablesta.Jos tietoja löydy, et voi lisätä asiakasta seuraavalta lomakkeelta.
+INDEX.PHP lomakkeelta lähetetty tieto käsitellään kasittely2.php. Koodi tarkastaa tietokannasta löytyykö lomakkeelle kirjattu nimi ja salasana Kartoittaja tablesta.Jos tietojasi ei löydy, et voi lisätä asiakasta seuraavalta lomakkeelta.
 ```
 <?php
 
   $nimi = $_POST["Nimi"];
-  $salasana = $_POST["Salasana"];
+  $salasana = $_POST["Salasana"];  Muuttujat määritellään näin
   $kart_id;
 
-  $conn = new mysqli($servername, $username, $password, $dbname);
-// Check connection
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
-}
+  
 
 $sql = "SELECT * FROM kartoittaja WHERE nimi='{$nimi}' AND salasana='{$salasana}'";
 $result = $conn->query($sql);
@@ -98,7 +97,9 @@ if ($result->num_rows > 0) {
 echo "Lisää asiakas kartoittajalle: " . $kart_id . " " . $nimi;
 $conn->close();
 ```
-Kun olet kirjaantunut lomakkeelle sisään kasittely2.php sivun alhaalla on lomake, johon kirjoitetaan asiakas ja kart_id, jolla selviää kuka kartoittaja on kyseessä.
+Kun olet kirjaantunut lomakkeelle sisään kasittely2.php sivun alhaalla on lomake, johon kirjoitetaan asiakas ja kart_id, jolla selviää kuka kartoittaja on kyseessä. ECHO kirjoittaa haun tulokset sivulle näkyviin.
+
+###ASIAKKAAN LISÄÄMINEN
 ```
 <html>
   <body>
@@ -109,20 +110,32 @@ Kun olet kirjaantunut lomakkeelle sisään kasittely2.php sivun alhaalla on loma
       <input type="submit" value="Lisää asiakas">
     </form>
   </body>
-
 </html>
 ```
 Tältä lomakkeelta lähetetyt tiedot käsitellään lomalleella kasittely3.php
 ```
 <?php
-       
+session_start();
+$servername = "xxxx";
+$username = "xxxx";
+$password = "xxxx";
+$dbname = "xxxx";
+
+
+$conn = new mysqli ($servername, $username, $password, $dbname);
+ if ($conn->connect_error) {
+  die("connection failed: " .$conn-> connect_error);
+ }
+
+    
+    
 echo $_POST['Asiakas'];
 echo $_POST['kart_id'];
 
 $asiakas = $_POST['Asiakas'];
 $kart_id = $_POST['kart_id'];
 
-
+$_SESSION["kart_id"] = $kart_id;
 
 $stmt = $conn->prepare('INSERT INTO asiakas(asiakas,kart_id) VALUES (?,?)');
 $stmt->bind_param('ss',$asiakas,$kart_id);
@@ -135,10 +148,52 @@ header("Location: listaus.php");
 
 
 ?>
-```
-Tämä kysely lisää asikas tietokantaa asiakkaan tiedot ja kirjautuneen kartoittajan (kart_id). Samalla koodi tulostaa kartoittajan id ja asiakaan.
 
-Rekisteröityminen tapahtuu omalla lomakkeella. Rekisterointi.php sivulla
+```
+Tämä kysely lisää Asiakas tietokantaa asiakkaan tiedot ja kirjautuneen kartoittajan (kart_id). Samalla koodi tulostaa kartoittajan id ja lisätyn asiakaan.
+```
+<?php
+session_start();
+
+$servername = "xxxxx";
+$username = "xxxxx";
+$password = "xxxxx";
+$dbname = "xxxxx";
+
+$conn = new mysqli ($servername, $username, $password, $dbname);
+ if ($conn->connect_error) {
+    die("connection failed: " .$conn-> connect_error);
+ }
+
+
+echo " Tässä on sinun asiakkaasi <br><br>:";
+
+
+    $sql = "SELECT asiakas.asiakas,kartoittaja.nimi FROM asiakas INNER JOIN kartoittaja ON kartoittaja.id = asiakas.kart_id AND kartoittaja.id = {$_SESSION['kart_id']}";
+    
+    $result = $conn->query($sql);
+    
+    if ($result->num_rows >0){
+        while ($row = $result->fetch_assoc()){ 
+            echo $row["asiakas"]."<br>";
+            
+            
+            
+          
+        }
+    }
+
+  
+    
+   $conn->close();
+
+?>
+```
+Tällä haulla haetaan kirjautuneen kartoittajan asiakkaat ja tulostetaan alekkain sivulle. Tästä voi jatkaa hyvin laskutusjärjestelmän rakentamista.
+
+###REKISTERÖITYMINEN
+
+Jos et ole rekisteröintynyt aikaisemmin niin rekisteröityminen tapahtuu omalla lomakkeella. Rekisterointi.php sivulla
 ```
 <html>
     <form action ="kasittely.php" method ="post">
@@ -173,7 +228,7 @@ echo $_POST['Nimi'];
 echo $_POST['Salasana'];
 
 $nimi = $_POST['Nimi'];
-$salasana = $_POST['Salasana'];
+$salasana = $_POST['Salasana'];     Muuttujat määritellään näin
 
 $stmt = $conn->prepare('INSERT INTO kartoittaja(nimi,salasana)VALUES(?,?)');
 $stmt->bind_param('ss',$nimi,$salasana,);
