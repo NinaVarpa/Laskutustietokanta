@@ -53,6 +53,8 @@ if ($conn->connect_error) {
 }
 ```
 ## KIRJAANTUMINEN
+
+index.php
 ```
 <html>
     <body>
@@ -71,12 +73,20 @@ if ($conn->connect_error) {
 ```
 
 INDEX.PHP lomakkeelta lähetetty tieto käsitellään kasittely2.php. Koodi tarkastaa tietokannasta löytyykö lomakkeelle kirjattu nimi ja salasana Kartoittaja tablesta.Jos tietojasi ei löydy, et voi lisätä asiakasta seuraavalta lomakkeelta.
+
+kasittely2.php
 ```
 <?php
 
-  $nimi = $_POST["Nimi"];
-  $salasana = $_POST["Salasana"];  Muuttujat määritellään näin
-  $kart_id;
+$servername = "hyvis.mysql.database.azure.com";
+$username = "db_projekti";
+$password = "Sivyh2022";
+$dbname = "ninav_db";
+
+
+ $nimi = $_POST["Nimi"];
+ $salasana = $_POST["Salasana"];  Muuttujat määritellään näin
+ $kart_id;
 
   
 
@@ -96,10 +106,13 @@ if ($result->num_rows > 0) {
 
 echo "Lisää asiakas kartoittajalle: " . $kart_id . " " . $nimi;
 $conn->close();
+?> 
 ```
 Kun olet kirjaantunut lomakkeelle sisään kasittely2.php sivun alhaalla on lomake, johon kirjoitetaan asiakas ja kart_id, jolla selviää kuka kartoittaja on kyseessä. ECHO kirjoittaa haun tulokset sivulle näkyviin.
 
 ## ASIAKKAAN LISÄÄMINEN
+
+Tämä lomake löytyy kasittely2.php sivulta
 ```
 <html>
   <body>
@@ -151,6 +164,7 @@ header("Location: listaus.php");
 
 ```
 Tämä kysely lisää Asiakas tietokantaa asiakkaan tiedot ja kirjautuneen kartoittajan (kart_id). Samalla koodi tulostaa kartoittajan id ja lisätyn asiakaan.
+Nämä tiedot käsitellään listaus.php sivulla.
 ```
 <?php
 session_start();
@@ -193,7 +207,7 @@ Tällä haulla haetaan kirjautuneen kartoittajan asiakkaat ja tulostetaan alekka
 
 ## REKISTERÖITYMINEN
 
-Jos et ole rekisteröintynyt aikaisemmin niin rekisteröityminen tapahtuu omalla lomakkeella. Rekisterointi.php sivulla
+Jos et ole rekisteröintynyt aikaisemmin niin rekisteröityminen tapahtuu omalla lomakkeella. rekisterointi.php sivulla
 ```
 <html>
     <form action ="kasittely.php" method ="post">
