@@ -1,7 +1,8 @@
 # Laskutustietokanta
 Aloimme tietokanta projektin. Minulla on mennyt useampi päivä nettisivujen tekoon replitillä. Ongelmia oli myös tiedon siirossa githubin suuntaan. Loin uuden reposition githubiin.
 Jotenkin yhteys toimii nyt. rupean suunnittelemaan tietokantoja ( 27.9)
-Tänään tutkittu php toimintaa replitillä. Esimerkiksi https:// codeshack.io 
+Tänään tutkittu php toimintaa replitillä. Esimerkiksi https:// codeshack.io, W3Schools, php.net ja ohjelmointiputka. Apuna on hyvä kayttää tietokannan perusteista (opettajan materiaali).
+
 ## Laskutustietokannan toteutus
 Ensiksi kun haluat kirjautua tietokantaprojektiini luo yhteys php käyttäliittymään
 Asenna PHP: https://windows.php.net/download#php-8.1
@@ -130,7 +131,7 @@ Tältä lomakkeelta lähetetyt tiedot käsitellään lomalleella kasittely3.php
 <?php
 session_start();
 $servername = "xxxx";
-$username = "xxxx";
+$username = "xxxx";     
 $password = "xxxx";
 $dbname = "xxxx";
 
@@ -146,7 +147,7 @@ echo $_POST['Asiakas'];
 echo $_POST['kart_id'];
 
 $asiakas = $_POST['Asiakas'];
-$kart_id = $_POST['kart_id'];
+$kart_id = $_POST['kart_id'];    Muuttujan määrrittely
 
 $_SESSION["kart_id"] = $kart_id;
 
