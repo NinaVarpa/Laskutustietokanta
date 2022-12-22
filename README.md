@@ -79,10 +79,10 @@ kasittely2.php
 ```
 <?php
 
-$servername = "hyvis.mysql.database.azure.com";
-$username = "db_projekti";
-$password = "Sivyh2022";
-$dbname = "ninav_db";
+$servername = "xxxxx";
+$username = "xxxxx";
+$password = "xxxxx";
+$dbname = "xxxxx";
 
 
  $nimi = $_POST["Nimi"];
