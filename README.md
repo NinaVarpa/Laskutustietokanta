@@ -2,7 +2,7 @@
 Aloimme tietokanta projektin. Minulla on mennyt useampi päivä nettisivujen tekoon replitillä. Ongelmia oli myös tiedon siirossa githubin suuntaan. Loin uuden reposition githubiin.
 Jotenkin yhteys toimii nyt. rupean suunnittelemaan tietokantoja ( 27.9)
 Tänään tutkittu php toimintaa replitillä. Esimerkiksi https:// codeshack.io 
-Laskutustietokannan toteutus
+## Laskutustietokannan toteutus
 Ensiksi kun haluat kirjautua tietokantaprojektiini luo yhteys php käyttäliittymään
 Asenna PHP: https://windows.php.net/download#php-8.1
 VS16 x64 Non Thread Safe 
@@ -18,12 +18,13 @@ php/php.ini-development > muuta nimi > php.ini > avaa tiedosto
 extension=mysqli > poista kommentti
 
 extension_dir = "ext" > poista kommentti
-Tämän kun olet tehdyt etsi kansion polku ja kopioi polku. Mene command prompt ja C\ cd ja polku (osoite) kansioon. sen jälkeen kirjoita php\php lovalhost: ja portti mistä tieto kulkee.
-Sen jälkeen voit avatat visual coden ja
+Tämän kun olet tehdyt etsi kansion polku ja kopioi polku. Mene command prompt ja C\ cd ja polku (osoite) kansioon. sen jälkeen kirjoita php\php localhost: ja portti mistä tieto kulkee.
+Sen jälkeen voit avatat visual coden ja MySQL Workbenchin.
 
-Kun kirjaudut Mysqual workbench   mene kohtaan Data Export. Etsi sieltä ninav_db tietokanta. Tietokannasta löytyy Tablet Kartoittaja, Asiakas, kohde ja lasku. 
-Hahmoittelin tietokanta tableja paperille ja miten visuaalisesti toteuttaisin tietokantani. Toteutus ei mennyt ihan niin.
+Kun kirjaudut MySQL workbenchiin, mene kohtaan Data Export. Etsi sieltä xxx_db tietokanta. Tietokannasta löytyy Tablet Kartoittaja, Asiakas, kohde ja lasku. 
+Hahmoittelin tietokanta tableja paperille ja miten visuaalisesti toteuttaisin tietokantani. Toteutus ei mennyt ihan niin kuin olin ajatellut.
 
+## Ensimmäinen hahmotelma tietokannastani
 ![Suunnitelma](pititulla.jpg)
 
 ## Tässä toteutunut työ tietokannoistani
@@ -46,7 +47,7 @@ $password = "xxxxx";
 $dbname = "xxxx";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
-// Check connection
+// Check connection       Tarkistaa yhteyden
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
@@ -68,7 +69,6 @@ if ($conn->connect_error) {
      </Body>
 </html>
 ```
-
 
 INDEX.PHP lomakkeelta lähetetty tieto käsitellään kasittely2.php. Koodi tarkastaa tietokannasta löytyykö lomakkeelle kirjattu nimi ja salasana Kartoittaja tablesta.Jos tietojasi ei löydy, et voi lisätä asiakasta seuraavalta lomakkeelta.
 ```
