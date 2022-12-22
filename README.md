@@ -34,7 +34,7 @@ Tässä kuva tietokannastani. Tähän asti sain toteutettua työni.
 Tässä ovat tietokantani php filet.
 Ensimmäiseki tulee index.php sivu, jossa kirjaudutaan sivustolle, kun on rekisteröitynyt aikaisemmin itsensä tällä sivulla tai muuten sivussa on linkki rekistöröintisivulle.
 
-###YHTEYS TIETOKANTAAN
+## YHTEYS TIETOKANTAAN
 
 Yhteys php-lomakkeelta tietokantaan luodaan näin:
 ```
@@ -51,7 +51,7 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 ```
-### KIRJAANTUMINEN
+## KIRJAANTUMINEN
 ```
 <html>
     <body>
@@ -99,7 +99,7 @@ $conn->close();
 ```
 Kun olet kirjaantunut lomakkeelle sisään kasittely2.php sivun alhaalla on lomake, johon kirjoitetaan asiakas ja kart_id, jolla selviää kuka kartoittaja on kyseessä. ECHO kirjoittaa haun tulokset sivulle näkyviin.
 
-###ASIAKKAAN LISÄÄMINEN
+## ASIAKKAAN LISÄÄMINEN
 ```
 <html>
   <body>
@@ -191,7 +191,7 @@ echo " Tässä on sinun asiakkaasi <br><br>:";
 ```
 Tällä haulla haetaan kirjautuneen kartoittajan asiakkaat ja tulostetaan alekkain sivulle. Tästä voi jatkaa hyvin laskutusjärjestelmän rakentamista.
 
-###REKISTERÖITYMINEN
+## REKISTERÖITYMINEN
 
 Jos et ole rekisteröintynyt aikaisemmin niin rekisteröityminen tapahtuu omalla lomakkeella. Rekisterointi.php sivulla
 ```
@@ -237,4 +237,4 @@ header("Location: index.php");
 die();
 ?>
 ```
-Tällä koodilla syötetään tietokantaan kartoittajan nimi ja salasana. ID numero luodaan automaattisesti tietokantaan.
+Tällä koodilla syötetään lomakkeelle kirjoitetut tiedot, kartoittajan nimi ja salasana, Kartoittaja tietokantaan. ID numero luodaan automaattisesti tietokantaan.
