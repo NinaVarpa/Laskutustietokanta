@@ -109,7 +109,7 @@ echo "Lisää asiakas kartoittajalle: " . $kart_id . " " . $nimi;
 $conn->close();
 ?> 
 ```
-Kun olet kirjaantunut lomakkeelle sisään kasittely2.php sivun alhaalla on lomake, johon kirjoitetaan asiakas ja kart_id, jolla selviää kuka kartoittaja on kyseessä. ECHO kirjoittaa haun tulokset sivulle näkyviin.
+Kun olet kirjaantunut lomakkeelle sisään kasittely2.php, löytyy sivun alhaalta lomake, johon kirjoitetaan asiakas ja kart_id, jolla selviää kuka kartoittaja on kyseessä. ECHO kirjoittaa haun tulokset sivulle näkyviin.
 
 ## ASIAKKAAN LISÄÄMINEN
 
@@ -120,7 +120,7 @@ Tämä lomake löytyy kasittely2.php sivulta
     <form action ="kasittely3.php" method ="post"><br>
       <label for="asiakas"> Asiakas</label>
       <input type="text" name="Asiakas"><br>
-      <input type = "Hidden" name="kart_id" value=<?php echo $kart_id ?>>
+      <input type = "Hidden" name="kart_id" value=<?php echo $kart_id ?>> piilotettu muuttuja
       <input type="submit" value="Lisää asiakas">
     </form>
   </body>
@@ -147,7 +147,7 @@ echo $_POST['Asiakas'];
 echo $_POST['kart_id'];
 
 $asiakas = $_POST['Asiakas'];
-$kart_id = $_POST['kart_id'];    Muuttujan määrrittely
+$kart_id = $_POST['kart_id'];    Muuttujan määrrittely (lomakkeelta lähetetyt tiedot)
 
 $_SESSION["kart_id"] = $kart_id;
 
