@@ -1,7 +1,7 @@
 # Laskutustietokanta
 Aloimme tietokanta projektin. Minulla on mennyt useampi päivä nettisivujen tekoon replitillä. Ongelmia oli myös tiedon siirossa githubin suuntaan. Loin uuden reposition githubiin.
 Jotenkin yhteys toimii nyt. rupean suunnittelemaan tietokantoja ( 27.9)
-Tänään tutkittu php toimintaa replitillä. Esimerkiksi https:// codeshack.io, W3Schools, php.net ja ohjelmointiputka. Apuna on hyvä kayttää tietokannan perusteista (opettajan materiaali).
+Tänään tutkittu php toimintaa replitillä. Esimerkiksi https:// codeshack.io, W3Schools, php.net ja ohjelmointiputka. Apuna on hyvä kayttää tietokannan perusteita. (opettajan materiaali).
 
 ## Laskutustietokannan toteutus
 Ensiksi kun haluat kirjautua tietokantaprojektiini luo yhteys php käyttäliittymään
