@@ -181,7 +181,7 @@ $conn = new mysqli ($servername, $username, $password, $dbname);
  }
 
 
-echo " Tässä on sinun asiakkaasi <br><br>:";
+echo " Tässä on sinun asiakkaasi: <br><br>";
 
 
     $sql = "SELECT asiakas.asiakas,kartoittaja.nimi FROM asiakas INNER JOIN kartoittaja ON kartoittaja.id = asiakas.kart_id AND kartoittaja.id = {$_SESSION['kart_id']}";
